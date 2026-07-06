@@ -1,11 +1,23 @@
-﻿form {
-    width:420px;
-    text-align:right;
+﻿.form-quitz {
+    width: 40%;
+    border: solid 1px gray;
+    padding: 22px;
 }
+
+    .form-quitz > div:last-child {
+        display: flex;
+        justify-content: flex-end;
+    }
 
 .quitz-content {
-    text-align:left;
+    text-align: left;
 }
 
-.question {
+.result {
+    font-size: 48px;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
