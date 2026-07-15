@@ -4,10 +4,10 @@
     padding: 22px;
 }
 
-    .form-quitz > div:last-child {
+/*    .form-quitz > div:last-child {
         display: flex;
         justify-content: flex-end;
-    }
+    }*/
 
 .quitz-content {
     text-align: left;
@@ -15,9 +15,57 @@
 
 .result {
     font-size: 48px;
-    width:100%;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question {
+    display: none;
+}
+
+    .question.active {
+        display: block;
+    }
+
+.options {
+    min-height:120px;
+}
+
+    .options label {
+        display: inline-block;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .options input[type="radio"] {
+        transform: scale(1.2);
+    }
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+}
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+.submit-container {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
 }
