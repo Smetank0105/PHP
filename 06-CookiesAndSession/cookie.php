@@ -7,7 +7,8 @@
 </head>
 <body>
 	<h1>Cookie</h1>
-	<?php
+	<?php
+	//use Swoole\Http\Request;
 	define('HOUR', 3600);
 	$visitor = false;
 	if(isset($_COOKIE['return']))
@@ -18,5 +19,20 @@
 	}
 	echo $visitor ? 'Welcome back' : 'Hello';
 	?>
+
+<button onclick='ResetCookies()'>Сбросить</button>
+
+<script>
+	function ResetCookies() {
+		let request = new XMLHttpRequest();
+		request.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				alert("Куки сброшены");
+			}
+		}
+		request.open('GET', 'reset_cookies.php', true);
+		request.send();
+	}
+</script>
 </body>
 </html>
