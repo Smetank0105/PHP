@@ -6,7 +6,8 @@ $number = $_REQUEST['q'];
 $answer;
 if (isset($_REQUEST['a'])) {
 	$answer = $_REQUEST['a'];
-	$_SESSION["question_{$answer[0]}"] = $answer[strlen($answer) - 1];
+	$arr = explode("_", $answer);
+	$_SESSION["question_{$arr[0]}"] = $arr[1];
 }
 
 
@@ -14,7 +15,6 @@ if($number < count($questions))
 {
 	echo $number;
 	$response = "<h2>{$questions[$number]}</h2>";
-	if(isset($answer) && isset( $_SESSION["question_{$answer[0]}"]))$response .= "<h2>сессия{$answer[0]}:{$_SESSION["question_{$answer[0]}"]}</h2>";
 	for ($i = 0; $i < count($answers[$number]); $i++)
 	{
 		$isChecked = (isset($_SESSION["question_{$number}"]) && $_SESSION["question_{$number}"] == $i) ? "checked" : "";
