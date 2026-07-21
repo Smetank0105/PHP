@@ -21,5 +21,4 @@
 	<?php endfor; ?>
 </div>
 <h2>Результат: <?= $result; ?></h2>
-
 <?php require_once __DIR__ . '/footer.php'; ?>

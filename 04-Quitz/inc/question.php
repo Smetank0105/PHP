@@ -1,16 +1,24 @@
 <?php
 require_once __DIR__ . '/data.php';
+session_start();
 
 $number = $_REQUEST['q'];
 $answer;
+if (isset($_REQUEST['a'])) {
+	$answer = $_REQUEST['a'];
+	$_SESSION["question_{$answer[0]}"] = $answer[strlen($answer) - 1];
+}
+
 
 if($number < count($questions))
 {
 	echo $number;
 	$response = "<h2>{$questions[$number]}</h2>";
+	if(isset($answer) && isset( $_SESSION["question_{$answer[0]}"]))$response .= "<h2>сессия{$answer[0]}:{$_SESSION["question_{$answer[0]}"]}</h2>";
 	for ($i = 0; $i < count($answers[$number]); $i++)
 	{
-		$response .= "<input type=\"radio\" id=\"{$number}_{$i}\" value=\"{$number}_{$i}\">";
+		$isChecked = (isset($_SESSION["question_{$number}"]) && $_SESSION["question_{$number}"] == $i) ? "checked" : "";
+		$response .= "<input type=\"radio\" name=\"question_{$number}\" id=\"{$number}_{$i}\" value=\"{$number}_{$i}\" ".$isChecked.">";
 		$response .= "<label for=\"{$number}_{$i}\">\"{$answers[$number][$i]}\"</label>;<br>";
 	}
 	$response .= "<input type=\"button\" value=\"Prev\" onclick=\"prevQuestion()\">";

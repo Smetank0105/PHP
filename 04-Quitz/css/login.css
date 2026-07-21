@@ -2,6 +2,22 @@
     background-color: darkslategray;
     color: aliceblue;
     display: grid;
+    transition: background-color 0.3s ease;
+}
+
+    body.light {
+        background-color: aliceblue;
+        color: darkslategray;
+    }
+
+    body.dark {
+        background-color: darkslategray;
+        color: aliceblue;
+    }
+
+#themeToggle {
+    width: 60px;
+    justify-self: end;
 }
 
 .login-card {
@@ -10,14 +26,14 @@
     border-radius: 5px;
     justify-self: center;
     box-shadow: 0 0 25px 0 aliceblue;
-    padding:0 0 16px 0;
+    padding: 0 0 16px 0;
 }
 
 .login-item {
     width: 380px;
     display: flex;
     justify-content: center;
-    justify-self:center;
+    justify-self: center;
 }
 
     .login-item > label {
@@ -29,11 +45,10 @@
     .login-item > input {
         width: 250px;
         margin: 5px;
-        border-radius:5px;
+        border-radius: 5px;
         border: none;
     }
 
     .login-item > button {
         width: 150px;
     }
-

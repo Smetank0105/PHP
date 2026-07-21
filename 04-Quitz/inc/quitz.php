@@ -2,7 +2,6 @@
 require_once __DIR__ . '/header.php';
 echo "Привет, {$_POST['first_name']} {$_POST['last_name']}, приятного прохождения ;-)";
 ?>
-
 <form action="result1.php" method="post" class="form-quitz">
 	<div class="quitz-content">
 		<?php for ($i = 0; $i < count($questions); $i++): ?>
@@ -19,5 +18,4 @@ echo "Привет, {$_POST['first_name']} {$_POST['last_name']}, приятно
 		<input type="submit" value="Отправить" />
 	</div>
 </form>
-
 <?php require_once __DIR__ . '/footer.php'; ?>
