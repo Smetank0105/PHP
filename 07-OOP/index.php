@@ -1,0 +1,8 @@
+<?php
+require_once __DIR__ . '/inc/header.php';
+?>
+<h1>OOP in PHP</h1>
+<?php
+require_once __DIR__ . '/inc/main.php';
+require_once __DIR__ . '/inc/footer.php';
+?>
