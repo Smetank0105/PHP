@@ -27,11 +27,12 @@ class Human
 	}
 
 	//Constructor:
-	function __construct($last_name, $first_name, $age)
+	//function __construct($last_name, $first_name, $age)
+	function __construct(...$param)
 	{
-		$this->last_name = $last_name;
-		$this->first_name = $first_name;
-		$this->age = $age;
+		$this->last_name = $param[0];
+		$this->first_name = $param[1];
+		$this->age = $param[2];
 		echo "<br>HConstructor<br>";
 	}
 	function __destruct()
@@ -91,15 +92,24 @@ class Student extends Human
 	}
 
 	//Constructor:
-	function __construct($last_name, $first_name, $age, $speciality, $group, $rate, $attendance)
+	function __construct(...$param)
 	{
-		parent::__construct($last_name, $first_name, $age);
-		$this->speciality = $speciality;
-		$this->group = $group;
-		$this->rate = $rate;
-		$this->attendance = $attendance;
+		parent::__construct(...$param);
+		$this->speciality = $param[3];
+		$this->group = $param[4];
+		$this->rate = $param[5];
+		$this->attendance = $param[6];
 		echo "<br>SConstructor<br>";
 	}
+	//function __construct($last_name, $first_name, $age, $speciality, $group, $rate, $attendance)
+	//{
+	//	parent::__construct($last_name, $first_name, $age);
+	//	$this->speciality = $speciality;
+	//	$this->group = $group;
+	//	$this->rate = $rate;
+	//	$this->attendance = $attendance;
+	//	echo "<br>SConstructor<br>";
+	//}
 	function __destruct()
 	{
 		echo "<br>SDestructor<br>";

@@ -12,6 +12,9 @@ echo $A;
 $human = new Human("Vercetty", "Tommy", 30);
 echo $human;
 
+//$t_student = new Student($human, "Chemistry", "WW_220", 90, 95);
+//echo $t_student;
+
 $student = new Student("Pinkman", "Jessie", 20, "Chemistry", "WW_220", 90, 95);
 echo $student;
 
