@@ -27,28 +27,22 @@ class Human
 	}
 
 	//Constructor:
-	//function __construct($last_name, $first_name, $age)
 	function __construct(...$param)
 	{
 		$this->last_name = $param[0];
 		$this->first_name = $param[1];
 		$this->age = $param[2];
-		echo "<br>HConstructor<br>";
-	}
-	function __destruct()
-	{
-		echo "<br>HDestructor<br>";
 	}
 
 	//Methods:
 	function __tostring()
 	{
-		echo "<pre>";
-		print_r(__CLASS__ . '<br>');
-		//var_dump($this);
-		//print_r($this);
-		echo "</pre>";
 		return "{$this->last_name} {$this->first_name}, {$this->age}";
+	}
+
+	function toArray()
+	{
+		return ['Human', $this->last_name, $this->first_name, $this->age];
 	}
 }
 
@@ -99,30 +93,40 @@ class Student extends Human
 		$this->group = $param[4];
 		$this->rate = $param[5];
 		$this->attendance = $param[6];
-		echo "<br>SConstructor<br>";
 	}
-	//function __construct($last_name, $first_name, $age, $speciality, $group, $rate, $attendance)
-	//{
-	//	parent::__construct($last_name, $first_name, $age);
-	//	$this->speciality = $speciality;
-	//	$this->group = $group;
-	//	$this->rate = $rate;
-	//	$this->attendance = $attendance;
-	//	echo "<br>SConstructor<br>";
-	//}
-	function __destruct()
-	{
-		echo "<br>SDestructor<br>";
-	}
+
 	//Methods:
 	function __tostring()
 	{
-		echo "<pre>";
-		print_r(__CLASS__ . '<br>');
-		//var_dump($this);
-		//print_r($this);
-		echo "</pre>";
 		return parent::__tostring() . ", {$this->speciality}, {$this->group}, {$this->rate}, {$this->attendance}";
+	}
+
+	function toArray()
+	{
+		return [
+			'Student',
+			$this->last_name,
+			$this->first_name,
+			$this->age,
+			$this->speciality,
+			$this->group,
+			$this->rate,
+			$this->attendance
+			];
+	}
+
+	public static function createFromHuman(Human $human, ...$param)
+	{
+		$student = new Student(
+			$human->last_name,
+			$human->first_name,
+			$human->age,
+			$param[0],
+			$param[1],
+			$param[2],
+			$param[3]
+		);
+		return $student;
 	}
 }
 
@@ -137,11 +141,54 @@ class Graduate extends Student
 			$this->subject = $value;
 		}
 	}
-//Constructor:
-	function __construct($last_name, $first_name, $age, $speciality, $group, $rate, $attendance, $subject)
+	//Constructor:
+	function __construct(...$param)
 	{
-		parent::__construct($last_name, $first_name, $age, $speciality, $group, $rate, $attendance);
-		$this->subject = $subject;
+		parent::__construct(...$param);
+		$this->subject = $param[7];
+	}
+
+	//Methods:
+	function __tostring()
+	{
+		return parent::__tostring() . ", {$this->subject}";
+	}
+
+	function toArray()
+	{
+		return [
+			'Graduate',
+			$this->last_name,
+			$this->first_name,
+			$this->age,
+			$this->speciality,
+			$this->group,
+			$this->rate,
+			$this->attendance,
+			$this->subject
+		];
+	}
+
+	public static function createFromStudent(Student $student, ...$param)
+	{
+		$graduate = new Graduate(
+			$student->last_name,
+			$student->first_name,
+			$student->age,
+			$student->speciality,
+			$student->group,
+			$student->rate,
+			$student->attendance,
+			$param[0]
+		);
+		return $graduate;
+	}
+
+	public static function createFromHuman(Human $human, ...$param)
+	{
+		$student = parent::createFromHuman($human, ...$param);
+		$graduate =self::createFromStudent($student, $param[4]);
+		return $graduate;
 	}
 }
 
